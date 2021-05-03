@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Torneios - criados</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (ionViewWillEnter)="ngOnInit()">
+  <app-card-tournament-button *ngFor="let tournament of tournaments" [id_tournament]="tournament.id_tournament" [name]="tournament.name" [game]="tournament.game" [description]="tournament.description" [hasPassword]="!!tournament.password"></app-card-tournament-button>
+</ion-content>

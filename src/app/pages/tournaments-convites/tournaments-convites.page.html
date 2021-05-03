@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Torneios - convites</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (ionViewWillEnter)="ngOnInit()">
+  <app-card-tournament-invite
+    *ngFor="let tournament of tournaments"
+    [id_tournament]="tournament.tournament.id_tournament"
+    [name]="tournament.tournament.name"
+    [game]="tournament.tournament.game"
+    [description]="tournament.tournament.description"
+    [hasPassword]="!!tournament.tournament.password"
+
+    (invitesUpdatedEvent)="getInvites()"
+  ></app-card-tournament-invite>
+</ion-content>

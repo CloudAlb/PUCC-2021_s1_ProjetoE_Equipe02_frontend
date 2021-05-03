@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Criar torneio</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="fGroup">
+    <ion-item>
+      <ion-label position="floating">Nome do torneio</ion-label>
+      <ion-input clearInput type="text" formControlName="nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Jogo</ion-label>
+      <ion-input clearInput type="text" formControlName="jogo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Número de times</ion-label>
+      <ion-input clearInput type="number" formControlName="num_times"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-textarea formControlName="descricao"></ion-textarea>
+    </ion-item>
+
+    <ion-footer>
+      <ion-toolbar>
+        <ion-button type="submit" (click)="submitForm()" expand="full" [disabled]="!fGroup.valid">
+          Criar torneio
+        </ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </form>
+</ion-content>

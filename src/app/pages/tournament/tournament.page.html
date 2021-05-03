@@ -1,0 +1,172 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{tournamentInfo.name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title size="small">Jogo: {{tournamentInfo.game}}</ion-title>
+    <ion-buttons slot="end">
+      Criador:
+      <ion-chip>
+        <ion-avatar>
+          <img src="{{tournamentInfo.user.avatar_image}}" />
+        </ion-avatar>
+        <ion-label>@{{tournamentInfo.user.username}}</ion-label>
+      </ion-chip>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-x="true" (ionViewWillEnter)="ngOnInit()">
+  <div class="wrapper">
+    <div class="item-childrens">
+      <div class="item">
+        <div class="item-parent" (click)="pickParticipant('w')">
+          <p>
+            <ion-chip color="light">
+              <ion-icon>
+                <img src="" />
+              </ion-icon>
+              <ion-label>{{ brackets.w }}</ion-label>
+              <ion-icon name="close"></ion-icon>
+            </ion-chip>
+          </p>
+        </div>
+        <div class="item-childrens">
+          <div class="item-child">
+            <div class="item">
+              <div class="item-childrens">
+                <div class="item-child">
+                  <div class="item">
+                    <div class="item-parent" (click)="pickParticipant('s1')">
+                      <p>
+                        <ion-chip color="light">
+                          <ion-icon>
+                            <img src="" />
+                          </ion-icon>
+                          <ion-label>{{ brackets.s1 }}</ion-label>
+                          <ion-icon name="close"></ion-icon>
+                        </ion-chip>
+                      </p>
+                    </div>
+                    <div class="item-childrens">
+                      <div class="item-child" (click)="pickParticipant('p1')">
+                        <p>
+                          <ion-chip color="light">
+                            <ion-icon>
+                              <img src="" />
+                            </ion-icon>
+                            <ion-label>{{ brackets.p1 }}</ion-label>
+                            <ion-icon name="close"></ion-icon>
+                          </ion-chip>
+                        </p>
+                      </div>
+                      <div class="item-child" (click)="pickParticipant('p2')">
+                        <p>
+                          <ion-chip color="light">
+                            <ion-icon>
+                              <img src="" />
+                            </ion-icon>
+                            <ion-label>{{ brackets.p2 }}</ion-label>
+                            <ion-icon name="close"></ion-icon>
+                          </ion-chip>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item-child">
+            <div class="item">
+              <div class="item-childrens">
+                <div class="item-child">
+                  <div class="item">
+                    <div class="item-parent" (click)="pickParticipant('s2')">
+                      <p>
+                        <ion-chip color="light">
+                          <ion-icon>
+                            <img src="" />
+                          </ion-icon>
+                          <ion-label>{{ brackets.s2 }}</ion-label>
+                          <ion-icon name="close"></ion-icon>
+                        </ion-chip>
+                      </p>
+                    </div>
+                    <div class="item-childrens">
+                      <div class="item-child" (click)="pickParticipant('p3')">
+                        <p>
+                          <ion-chip color="light">
+                            <ion-icon>
+                              <img src="" />
+                            </ion-icon>
+                            <ion-label>{{ brackets.p3 }}</ion-label>
+                            <ion-icon name="close"></ion-icon>
+                          </ion-chip>
+                        </p>
+                      </div>
+                      <div class="item-child" (click)="pickParticipant('p4')">
+                        <p>
+                          <ion-chip color="light">
+                            <ion-icon>
+                              <img src="" />
+                            </ion-icon>
+                            <ion-label>{{ brackets.p4 }}</ion-label>
+                            <ion-icon name="close"></ion-icon>
+                          </ion-chip>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<div class="fab-header">
+  <ion-fab vertical="top" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="createParticipantsListModal()">
+      <img src="../../../assets/icons/participants.png" alt="" />
+    </ion-fab-button>
+  </ion-fab>
+</div>
+
+<div *ngIf="userIsTournamentOwner">
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" *ngIf="!flagTournamentInitialized">
+    <ion-fab-button (click)="createInviteParticipantsModal()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="flagChangeWasMade">
+    <ion-fab-button (click)="showSaveTournamentAlert()">
+      <ion-icon name="save-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="flagTournamentReadyToInitialize">
+    <ion-fab-button (click)="showInitializeTournamentAlert()">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="flagWinnerSelected">
+    <ion-fab-button color="light" (click)="showChooseWinnerAlert()">
+      <img src="../../../assets/icons/crown.png" alt="" />
+    </ion-fab-button>
+  </ion-fab>
+</div>
+
+<div class="footer-bar">
+  <ion-footer class="ion-no-border">
+    <ion-toolbar class="footer"></ion-toolbar>
+  </ion-footer>
+</div>

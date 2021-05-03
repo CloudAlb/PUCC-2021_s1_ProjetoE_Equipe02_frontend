@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Criar torneio</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Nome do torneio</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Jogo</ion-label>
+    <ion-input [(ngModel)]="game"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descrição</ion-label>
+    <ion-input [(ngModel)]="description"></ion-input>
+  </ion-item>
+
+  <!--Validar-->
+  <ion-item>
+    <ion-label position="floating">Quantidade de participantes</ion-label>
+    <ion-input
+      type="number"
+      inputmode="numeric"
+      min="2"
+      max="8"
+      step="1"
+      [(ngModel)]="number_participants"
+      disabled=true
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Senha (opcional)</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button
+        type="submit"
+        (click)="criarTournament()"
+        expand="full"
+      >
+        Criar torneio
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Torneios</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid">
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" [routerLink]="['/tournaments-criar']">Criar torneio</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="dark" [routerLink]="['/tournaments-seus']">Torneios - criados</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="tertiary" [routerLink]="['/tournaments-participando']">Torneios - participando</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="danger" [routerLink]="['/tournaments-convites']">Torneios - convites</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

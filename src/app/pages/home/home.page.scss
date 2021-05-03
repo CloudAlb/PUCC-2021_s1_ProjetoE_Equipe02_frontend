@@ -1,0 +1,31 @@
+#tournament_button{
+  margin-top: 70vh;
+}
+
+#footer_pubs {
+  border-top: 1px solid;
+  margin: 0 15px 0 15px;
+}
+
+#footer_pubs ion-icon{
+  margin: 10px 5px 10px 10px;
+  font-size: 35px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.icon-text{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user-icon{
+  margin: 0 5px 5px 0;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+ion-card{
+  --background: url('../../../assets/backgrounds/001.svg') no-repeat center center / cover !important;
+  color: black;
+}

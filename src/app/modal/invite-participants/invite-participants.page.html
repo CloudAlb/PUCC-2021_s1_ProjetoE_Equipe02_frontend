@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Convidar pessoas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Voltar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="title"> Convide pessoas para o seu torneio </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="subtitle"> Quem você convidar vai receber uma notificação e poderá aceitar para entrar no seu torneio </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-searchbar
+    color="light"
+    placeholder="Insira um nome ou username"
+    debounce="800"
+    (ionChange)="getSearchData()"
+    [(ngModel)]="searchTerm"
+  ></ion-searchbar>
+
+  <ion-list>
+    <div *ngFor="let user of filteredUsers">
+      <ion-item button (click)="inviteUser(user.id_user, user.name)">
+        <ion-avatar slot="start">
+          <!--TODO, implementar fotos-->
+          <img src="{{user.avatar_image}}" />
+        </ion-avatar>
+        <ion-label class="ion-text-wrap"> {{user.name}} </ion-label>
+        <ion-label class="ion-text-wrap" color="medium">
+          @{{user.username}}
+        </ion-label>
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

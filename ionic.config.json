@@ -1,0 +1,7 @@
+{
+  "name": "ProjetoE_Equipe02_TorneioApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,14 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{name}}</ion-card-title>
+    <ion-card-subtitle>@{{username}}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-button href="/profile/{{id_user}}">
+    <ion-label>Ver perfil</ion-label>
+  </ion-button>
+
+  <ion-button *ngIf="!flagUserKicked" (click)="showKickParticipantAlert()">
+    <ion-icon name="ban-outline"></ion-icon>
+  </ion-button>
+</ion-card>

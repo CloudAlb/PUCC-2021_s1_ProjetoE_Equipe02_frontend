@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-searchbar></ion-searchbar>
+</ion-header>
+
+<ion-content (ionViewWillEnter)="ngOnInit()">
+  <!-- <ion-header>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>No que está pensando hoje ?</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-textarea rows="1" spellcheck="true"></ion-textarea>
+          <ion-button fill="outline" slot="end">Publicar</ion-button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-header> -->
+
+  <ion-list *ngFor="let publication of publications">
+    <ion-card href="/tournament/{{publication.tournament.id_tournament}}">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon class="user-icon" size="large" name="person-circle-outline"></ion-icon>
+          <span class="icon-text">{{publication.tournament.user.name}}</span>
+        </ion-card-title>
+        <ion-card-subtitle>{{publication.tournament.name}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        Jogo: {{publication.tournament.game}}
+        <!-- <br>Keep close to Nature's heart... and break clear away, once in awhile,
+        and climb a mountain or spend a week in the woods. Wash your spirit clean. -->
+      </ion-card-content>
+
+      <!-- <footer id="footer_pubs">
+        <ion-icon size="small" name="thumbs-up-outline"></ion-icon>
+        <span class="icon-text">Curtir</span>
+        <ion-icon size="small" name="chatbox-ellipses-outline"></ion-icon>
+        <span class="icon-text">Comentar</span>
+        <ion-icon size="small" name="arrow-redo-outline"></ion-icon>
+        <span class="icon-text">Compartilhar</span>
+      </footer> -->
+    </ion-card>
+  </ion-list>
+
+  <ion-fab id="tournament_button" slot="fixed" edge="true" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-infinite-scroll threshold="80px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

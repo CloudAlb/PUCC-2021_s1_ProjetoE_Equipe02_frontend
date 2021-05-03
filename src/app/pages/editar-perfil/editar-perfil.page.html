@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar perfil</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (ionViewWillEnter)="ngOnInit()">
+  <ion-text color="primary">
+    <h5>Informações pessoais</h5>
+  </ion-text>
+
+  <ion-item>
+    <ion-label position="stacked">Nome</ion-label>
+    <ion-input [placeholder]="placeholder" [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Nome de usuário</ion-label>
+    <ion-input [placeholder]="placeholder" [(ngModel)]="username"></ion-input>
+  </ion-item>
+
+  <!--
+    TODO, colocar caracteres restantes
+  -->
+  <ion-item>
+    <ion-label position="stacked">Bio</ion-label>
+    <ion-textarea
+      rows="5"
+      [placeholder]="placeholder_bio"
+      [(ngModel)]="bio"
+      maxlength="156"
+    ></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">E-mail</ion-label>
+    <ion-input [placeholder]="placeholder" [(ngModel)]="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Data de nascimento</ion-label>
+    <ion-datetime
+      displayFormat="DD/MM/YYYY"
+      max="{{maxDate}}"
+      [(ngModel)]="birth_date"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="editUserInfo()" size="small" slot="end"
+      >Confirmar</ion-button
+    >
+  </ion-item>
+
+  <ion-text color="primary">
+    <h5>Redes sociais</h5>
+  </ion-text>
+
+  <ion-item>
+    <ion-chip (click)="editUserSocialInfo('Telegram', telegram)">
+      <ion-avatar>
+        <img src="{{logoTelegram}}" />
+      </ion-avatar>
+      <ion-label color="dark">{{placeholder_telegram}}</ion-label>
+    </ion-chip>
+  </ion-item>
+
+  <ion-item>
+    <ion-chip (click)="editUserSocialInfo('Facebook', facebook)">
+      <ion-avatar>
+        <img src="{{logoFacebook}}" />
+      </ion-avatar>
+      <ion-label color="dark">{{placeholder_facebook}}</ion-label>
+    </ion-chip>
+  </ion-item>
+
+  <ion-item>
+    <ion-chip (click)="editUserSocialInfo('Twitter', twitter)">
+      <ion-avatar>
+        <img src="{{logoTwitter}}" />
+      </ion-avatar>
+      <ion-label color="dark">{{placeholder_twitter}}</ion-label>
+    </ion-chip>
+  </ion-item>
+
+  <ion-item>
+    <ion-chip (click)="editUserSocialInfo('Twitch', twitch)">
+      <ion-avatar>
+        <img src="{{logoTwitch}}" />
+      </ion-avatar>
+      <ion-label color="dark">{{placeholder_twitch}}</ion-label>
+    </ion-chip>
+  </ion-item>
+
+  <ion-text color="primary">
+    <h5>Outras informações</h5>
+  </ion-text>
+
+  <ion-item>
+    <ion-label>Alterar senha</ion-label>
+    <ion-button (click)="hideChangePasswordModule()" size="small"
+      >{{buttonAlterPasswordShownText}}</ion-button
+    >
+  </ion-item>
+
+  <div *ngIf="alterPasswordShown">
+    <ion-item>
+      <ion-label position="stacked">Senha atual</ion-label>
+      <ion-input
+        type="password"
+        placeholder="********"
+        [(ngModel)]="password_old"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nova senha</ion-label>
+      <ion-input
+        type="password"
+        placeholder="********"
+        [(ngModel)]="password_new"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Confirme nova senha</ion-label>
+      <ion-input
+        type="password"
+        placeholder="********"
+        [(ngModel)]="password_confirm"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="editPassword()" size="small" slot="end"
+        >Confirmar</ion-button
+      >
+    </ion-item>
+  </div>
+</ion-content>

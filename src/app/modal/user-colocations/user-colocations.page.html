@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Colocações de {{name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Voltar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-card-colocation *ngFor="let userColocation of userColocations" [tournament_id]="userColocation.tournament_id"
+    [tournament_name]="userColocation.tournament_name" [tournament_game]="userColocation.tournament_game"
+    [tournament_description]="userColocation.tournament_description" [colocation]="userColocation.colocation">
+  </app-card-colocation>
+
+  <div class="info" *ngIf="colocationsQuantity == 0">
+    <ion-text>
+      <h2>O usuário ainda não possui colocações!</h2>
+    </ion-text>
+  </div>
+</ion-content>

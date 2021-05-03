@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seu perfil</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (ionViewWillEnter)="ngOnInit()">
+  <!-- botão de ações -->
+
+  <!-- seguir pessoa -->
+  <ion-fab *ngIf="!flagIsOwnUser && !flagUserIsFollowing" (click)="followUser()" vertical="bottom" horizontal="start"
+    slot="fixed">
+    <ion-fab-button color="dark">
+      <img src="../../../assets/icons/follow.png" alt="">
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- deixar de seguir pessoa -->
+  <ion-fab *ngIf="!flagIsOwnUser && flagUserIsFollowing" (click)="unfollowUser()" vertical="bottom" horizontal="start"
+    slot="fixed">
+    <ion-fab-button color="dark">
+      <img src="../../../assets/icons/unfollow.png" alt="">
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab *ngIf="flagIsOwnUser" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark" routerLink="{{editarPerfilLink}}">
+      <ion-icon name="create-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="showColocationsModal()">
+    <ion-fab-button color="dark">
+      <img src="../../../assets/icons/leaderboard.png" alt="">
+    </ion-fab-button>
+  </ion-fab>
+
+  <div class="imagens">
+    <img src="{{backgroundPath}}" alt="Background" class="background" />
+    <img src="{{avatarPath}}" alt="Avatar" class="avatar" />
+  </div>
+
+  <div class="informacoes" *ngIf="user">
+    <ion-grid>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>@{{user.data.username}}</ion-card-subtitle>
+          <ion-card-title>{{user.data.name}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+
+      <ion-row>
+        <ion-col>
+          <ion-card class="nivel">
+            <ion-card-header>
+              <ion-card-subtitle>Nível</ion-card-subtitle>
+              <ion-card-title>{{user.data.level}}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="moedas">
+            <ion-card-header>
+              <ion-card-subtitle>Moedas</ion-card-subtitle>
+              <ion-card-title>{{user.data.coins}}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card class="amigos">
+            <ion-card-header>
+              <ion-card-subtitle>Seguidores</ion-card-subtitle>
+              <ion-card-title>{{user.data.followers}}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="bio" *ngIf="user.data.bio">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Bio</ion-card-subtitle>
+          <ion-card-title class="bio_text">{{user.data.bio}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </div>
+
+    <div class="socials" *ngIf="socials.length > 0">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Redes sociais</ion-card-subtitle>
+          <ion-card-title>
+            <app-social-card *ngFor="let social of socials" [social]="social.social" [username]="social.username">
+            </app-social-card>
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

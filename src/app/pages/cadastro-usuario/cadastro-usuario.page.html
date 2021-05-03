@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="fGroup">
+    <ion-item>
+      <ion-label position="floating">Usuário</ion-label>
+      <ion-input clearInput type="text" formControlName="usuario" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nome Completo</ion-label>
+      <ion-input clearInput type="text" formControlName="nome" [(ngModel)]="name"></ion-input>
+      <!-- Mostra a mensagem de erro
+        <div *ngIf="fGroup.controls.nome.errors">
+        <p *ngIf="fGroup.controls.nome.errors.required"> Esse campo é obrigatório</p>
+      </div> -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input clearInput type="text" formControlName="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input required clearInput type="password" formControlName="senha" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Data de nascimento</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="data_nascimento" max={{maxDate}} [(ngModel)]="birth_date"></ion-datetime>
+      <!-- <ion-input clearInput placeholder="teste" type="date" ></ion-input> -->
+    </ion-item>
+
+    <ion-footer>
+      <ion-toolbar>
+        <ion-button type="submit" (click)="cadastrar(name, username, email, password, birth_date)" expand="full" [disabled]="!fGroup.valid">
+          Cadastrar
+        </ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </form>
+</ion-content>
